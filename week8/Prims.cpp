@@ -23,7 +23,6 @@ int prims(unordered_map<int,vector<pair<int,int>>> &adj)
         {
             if(vis[edge.second])  continue;
             pq.push({edge.second,edge.first});
-
         }
     }
     return mst;
