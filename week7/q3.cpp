@@ -9,40 +9,6 @@ with exactly k edges on the path
 #include<climits>
 using namespace std;
 
-/* int dijkstra(unordered_map<int,vector<vector<int>>> &adj,int src,int dst,int k,int V)
-{
-    priority_queue<vector<int>,vector<vector<int>>,greater<vector<int>>> pq;
-    pq.push({0,0,src});
-
-    vector<int> dist(V,INT_MAX);
-    dist[src]=0;
-
-    int ans=INT_MAX;
-    while(!pq.empty())
-    {
-        auto temp=pq.top();
-        pq.pop();
-        int cost=temp[0];
-        int edge=temp[1];
-        int node=temp[2];
-        if(edge>k) continue;
-        if(node==dst && edge==k) ans=min(ans,cost);
-        for(auto &adjPair:adj[node])
-        {
-            int adjNode=adjPair[0];
-            int edgeWt=adjPair[1];
-            if(dist[adjNode]>cost+edgeWt)
-            {
-                dist[adjNode]=cost+edgeWt;
-                pq.push({dist[adjNode],edge+1,adjNode});
-            }
-        }
-        
-    }
-    return ans==INT_MAX?-1:ans;
-}
- */
-
 int solve(unordered_map<int,vector<vector<int>>> &adj,int src,int dst,int k)
 {
     if(k==0 && src==dst) return 0;
