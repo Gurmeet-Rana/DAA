@@ -8,6 +8,7 @@ void findSum(vector<int> &v,int l,int r,int x,int currSum,unordered_map<int,int>
 {
     if(x==currSum || l>r)
     {
+        cout<<x<<endl;
         mp[currSum]++;  
         return ;        
     }
