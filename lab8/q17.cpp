@@ -9,7 +9,7 @@ Output will be 'Yes Bipartite' if graph is bipartite, otherwise print 'Not Bipar
 #include<queue>
 using namespace std;
 
-bool isBipartite(vector<vector<int>> &matrix,int V,int E)
+bool isBipartite(vector<vector<int>> &matrix,int V)
 {
     vector<int> color(V,0);
     queue<int> q;
@@ -36,19 +36,16 @@ bool isBipartite(vector<vector<int>> &matrix,int V,int E)
 int main()
 {
     int V;
-    cout<<"Enter the number of vertices : "<<endl;
+    cout<<"Enter the size of adjacency matrix : "<<endl;
     cin>>V;
-    vector<vector<int>> matrix(V+1,vector<int>(V,0));
-    int E;
-    cout<<"Enter the number of edges in the graph : "<<endl;
-    cin>>E;
-    for(int i=0;i<E;i++)
+    vector<vector<int>> matrix(V,vector<int>(V));
+    for(int i=0;i<V;i++)
     {
-        int n1,n2;
-        cout<<"Enter the vertices of this edge : "<<endl;
-        cin>>n1>>n2;
-        matrix[n1][n2]=1;
-        matrix[n2][n1]=1;
+        for(int j=0;j<V;j++)
+        {
+            cout<<"Is there an edge between "<<i<<" and "<<j<<endl;
+            cin>>matrix[i][j];
+        }
     }
     cout<<"The graph is : "<<endl;
     for(int i=0;i<matrix.size();i++)
@@ -59,7 +56,7 @@ int main()
         }
         cout<<endl;
     }
-    if(isBipartite(matrix,V,E))
+    if(isBipartite(matrix,V))
     {
         cout<<"Yes , Bipartite !"<<endl;
     }
