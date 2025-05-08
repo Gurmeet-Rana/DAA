@@ -12,6 +12,7 @@ int acitivitySelector(vector<pair<int,int>> &activities,int i,int n)
 {
     if(i>=n) return 0;
     int m=i+1;
+    cout<<activities[i].first<<" "<<activities[i].second<<endl;
     while(m<n && activities[i].second>activities[m].first)
     {
         m++;
