@@ -8,44 +8,37 @@ using namespace std;
 void dfs(vector<vector<int>> &adj,int node1,int node2,vector<int> &vis,int &value)
 {
     vis[node1]=1;
-    for(auto adjNode:adj[node1])
+    if(node1==node2)
     {
-        if(!vis[adjNode])
+        value=1;
+        return ;
+    }
+    for(int adjNode=0;adjNode<adj[node1].size();adjNode++)
+    {
+        if(adj[node1][adjNode] && !vis[adjNode])
         {
-            if(adjNode==node2)
-            {
-                value=1;
-            }
+            
             dfs(adj,adjNode,node2,vis,value);
+            if(value) return;
         }
     }
 }
 
 int main()
 {
-    int testCases=0;
-    cout<<"Enter the number of testCases : "<<endl;
-    cin>>testCases;
-    while(testCases--)
-    {
-        int n,m;
+    int n,m;
         cout<<"Enter the size of the adjacency matrix : "<<endl;
         cin>>n;
         cin>>m;
 
         vector<vector<int>> adj(n,vector<int>(m,0));
 
+        cout<<"Enter values in the adjacent matrix : "<<endl;
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
-            {
-
-                int node;
-                cout<<"Is there an edges between "<<i<<" and "<<j<<" in the graph ?"<<endl;
-                cin>>node;
-
-                adj[i][j]=node;
-
+            {                                
+                cin>>adj[i][j];
             }
         }
 
@@ -59,6 +52,13 @@ int main()
             cout<<endl;
         }
 
+
+    int testCases=0;
+    cout<<"Enter the number of testCases : "<<endl;
+    cin>>testCases;
+    while(testCases--)
+    {
+        
         int node1,node2;
         cout<<"Enter first node : "<<endl;
         cin>>node1;

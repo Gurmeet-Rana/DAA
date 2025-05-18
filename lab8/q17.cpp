@@ -4,6 +4,7 @@ Input Format:
 Input will be the graph in the form of adjacency matrix or adjacency list. 
 Output Format: 
 Output will be 'Yes Bipartite' if graph is bipartite, otherwise print 'Not Bipartite'. */
+
 #include<iostream>
 #include<vector>
 #include<queue>
@@ -42,8 +43,7 @@ int main()
     for(int i=0;i<V;i++)
     {
         for(int j=0;j<V;j++)
-        {
-            cout<<"Is there an edge between "<<i<<" and "<<j<<endl;
+        {            
             cin>>matrix[i][j];
         }
     }

@@ -10,44 +10,42 @@ Output will be 'Yes Cycle Exists' if cycle exists otherwise print 'No Cycle Exis
 #include<vector>
 using namespace std;
 
-bool dfsCycle(vector<vector<int>> &matrix,int i,int j,vector<vector<int>> &vis,vector<vector<int>> &dfsVis)
+bool dfsCycle(vector<vector<int>> &matrix,int node,vector<int> &vis,vector<int> &dfsVis)
 {
-    vis[i][j]=1;
-    dfsVis[i][j]=1;
-    for(int col=0;col<matrix[0].size();col++)
-    {
-        if(matrix[j][col]==1 && !vis[j][col])
-        {
-            if(dfsCycle(matrix,j,col,vis,dfsVis)) 
-            {
+    vis[node]=1;
+    dfsVis[node]=1;
+    for(int neighbor = 0; neighbor < matrix.size(); neighbor++) {
+        if(matrix[node][neighbor]) {
+            if(!vis[neighbor]) {
+                if(dfsCycle(matrix, neighbor, vis, dfsVis))
+                    return true;
+            } else if(dfsVis[neighbor]) {
                 return true;
             }
         }
-        else if(dfsVis[j][col]) return true;
     }
-    dfsVis[i][j]=0;
+    dfsVis[node]=0;
     return false;
 }
 
 bool isCycle(vector<vector<int>> &matrix)
 {
     
+    int V=matrix.size(); 
 
+    vector<int> vis(V,0),dfsVis(V,0);
     for(int i=0;i<matrix.size();i++)
     {
-        for(int j=0;j<matrix[0].size();j++)
-        {
-            if(matrix[i][j])
+
+        if(!vis[i])
             {
-                vector<vector<int>> vis(matrix.size(),vector<int>(matrix.size(),0));
-                vector<vector<int>> dfsVis(matrix.size(),vector<int>(matrix.size(),0));
-                if(dfsCycle(matrix,i,j,vis,dfsVis)) 
+                if(dfsCycle(matrix,i,vis,dfsVis)) 
                 {                    
                     return true;
                 }
             }
-        }
     }
+    
 
     return false;
 
@@ -64,7 +62,7 @@ int main()
     {
         for(int j=0;j<V;j++)
         {
-            cout<<"Is there an edge between "<<i<<" and "<<j<<endl;
+            
             cin>>matrix[i][j];
         }
     }
