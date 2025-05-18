@@ -47,7 +47,7 @@ class DisJointSet
 
 int kruskals(unordered_map<int,vector<vector<int>>> &adj,int E,int n)
 {
-    priority_queue<vector<int>,vector<vector<int>>,greater<vector<int>>> pq;
+    priority_queue<vector<int>> pq;
     for(int i=0;i<E;i++)
     {
         for(auto adjPair:adj[i])

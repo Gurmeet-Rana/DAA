@@ -14,16 +14,14 @@ int main()
     int n;
     cout<<"Enter the number of items : "<<endl;
     cin>>n;
-    vector<pair<double,pair<int,int>>> knapSack(n);
-    cout<<"Enter n weights and values : "<<endl;
+    vector<pair<double,pair<int,int>>> knapSack(n); 
     for(int i=0;i<n;i++)
     {
-        int wt;
-        cout<<"Enter the weight of "<<i<<" th item : "<<endl;
+        int wt,val;
+        cout<<"Enter the weight and value of "<<i<<" th item : "<<endl;
         cin>>wt;
-        int val;
-        cout<<"Enter the value of "<<i<<" th item : "<<endl;
         cin>>val;
+         
         knapSack[i]={(double)val/wt,{wt,val}};
     }
     sort(knapSack.begin(),knapSack.end(),[](const pair<double,pair<int,int>> &a,const pair<double,pair<int,int>> &b)
@@ -31,7 +29,7 @@ int main()
     return a.first>b.first;
 });
     //YOU HAVE TO SORT BY VAL BY WEIGHT
-    int maxVal=0;
+    double maxVal=0;
     int bagCapacity;
     cout<<"Enter the Maximum Capacity of the bag : "<<endl;
     cin>>bagCapacity;
@@ -39,7 +37,7 @@ int main()
     {
         int wt=p.second.first;
         int val=p.second.second;
-        int valPerWt=p.first;
+        double valPerWt=p.first;
         cout<<wt<<" "<<val<<" "<<valPerWt<<endl;
         if(bagCapacity<wt && bagCapacity>0)
         {

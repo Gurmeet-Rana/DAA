@@ -17,11 +17,13 @@ int prims(unordered_map<int,vector<pair<int,int>>> &adj)
         auto temp=pq.top();
         int w=temp.first;
         int v=temp.second;
+        pq.pop();
         if(vis[v]) continue;
+        vis[v]=1;
         mst+=w;
         for(auto &edge:adj[v])
         {
-            if(vis[edge.second])  continue;
+            if(vis[edge.first])  continue;
             pq.push({edge.second,edge.first});
         }
     }
@@ -42,6 +44,8 @@ int main()
     {
         int u,v;
         cout<<"Enter two nodes : "<<endl;
+        cin>>u;
+        cin>>v;
         int wt;
         cout<<"Enter the weight of this edge : "<<endl;
         cin>>wt;
@@ -49,7 +53,8 @@ int main()
         adj[v].push_back({u,wt});
     }
 
-    cout<<"MST WEIGHT : "<<prims(adj)<<endl;
+    cout<<"MST WEIGHT : "<<endl;
+    cout<<prims(adj)<<endl;
 
 
     return 0;
