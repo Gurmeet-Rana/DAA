@@ -5,32 +5,7 @@ cannot break an item i.e. either pick the complete item or don't pick it. (0-1 p
 
 #include<iostream>
 #include<vector>
-using namespace std;
-
-int tabulation(vector<int> &wt,vector<int> &val,int &W)
-{
-    int n=wt.size();
-    vector<vector<int>> t(n+1,vector<int>(W+1,0));
-    for(int i=n-1;i>=0;i--)
-    {
-        for(int j=0;j<=W;j++)
-        {
-            int w=wt[i];
-            int v=val[i];
-            if(w<=j)
-            {
-                t[i][j]=max(v+t[i+1][j-w],t[i+1][j]);
-            }
-            else
-            {
-                t[i][j]=t[i+1][j];
-            }
-        }
-    }
-    return t[0][0];
-}
-
-
+using namespace std; 
 
 vector<vector<int>> dp;
 int solve(vector<int> &wt,vector<int> &val,int i,int n,int W)
@@ -53,19 +28,15 @@ int main()
     vector<int> wt(n),values(n);
     for(int i=0;i<n;i++)
     {
-        cout<<"Enter wt of "<<i+1<<" th item : "<<endl;
+        cout<<"Enter wt and value of "<<i+1<<" th item : "<<endl;
         cin>>wt[i];
-        cout<<"Enter the value of "<<i+1<<" th item : "<<endl;
-        cin>>values[i];
+        cin>>values[i];             
     }
     int W;
     cout<<"Enter the bag capacity : "<<endl;
     cin>>W;
     dp.resize(n+1,vector<int>(W+1,-1));
     cout<<solve(wt,values,0,n,W)<<endl;
-
-    cout<<tabulation(wt,values,W);
-
-
+   
     return 0;
 }

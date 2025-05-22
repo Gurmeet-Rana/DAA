@@ -1,5 +1,6 @@
 /* Given a string of characters, design an algorithm and implement it using a program to print all
 possible permutations of the string in lexicographic order */
+
 #include<iostream>
 
 using namespace std;
