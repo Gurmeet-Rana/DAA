@@ -10,8 +10,10 @@ int totalWays(vector<int>&coins,int target,int i)
 {
     if(target==0) return 1;
     if(i>=coins.size() || target<0) return 0;
-    if(target<coins[i]) return totalWays(coins,target,i+1);
-    return totalWays(coins,target-coins[i],i)+totalWays(coins,target-coins[i],i+1);
+
+    //if(target<coins[i]) return totalWays(coins,target,i+1);
+
+    return totalWays(coins,target-coins[i],i)+totalWays(coins,target,i+1);
 }
 int main()
 {
