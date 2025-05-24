@@ -1,14 +1,16 @@
 /* Given an unsorted array of elements, design an algorithm and implement it using a program to
 find whether majority element exists or not. Also find median of the array. A majority element is
 an element that appears more than n/2 times, where n is the size of array */
+
+
 #include<iostream>
 #include<vector>
 using namespace std;
-pair<int,int> MooreVotingAlgo(vector<int> &v,int n)
+int MooreVotingAlgo(vector<int> &v,int n)
 {
     int ans=v.front();
-    int freq=0;
-    for(int i=0;i<n;i++)
+    int freq=1;
+    for(int i=1;i<n;i++)
     {
         if(v[i]==ans)
         {
@@ -21,9 +23,10 @@ pair<int,int> MooreVotingAlgo(vector<int> &v,int n)
         if(freq==0)
         {
             ans=v[i];
+            freq=1;
         }
     }
-    return {ans,freq};
+    return ans;
 }
 int main()
 {
@@ -39,8 +42,8 @@ int main()
         v.push_back(ele);
     }
 
-    auto p=MooreVotingAlgo(v,n);
-    cout<<"Element - "<<p.first<<" Freq - "<<p.second<<endl;
+    ;
+    cout<<"Element - "<<MooreVotingAlgo(v,n);
 
     return 0;
 }

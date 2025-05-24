@@ -10,7 +10,7 @@ int main()
     char ch;
     do
     {
-        cout<<"Enter a character . Enter @ to exit";
+        cout<<"Enter a character . Enter @ to exit"<<" ";
         cin>>ch;
         if(ch!='@')
         {
@@ -19,6 +19,7 @@ int main()
         /* code */
     } while (ch!='@');
 
+    cout<<"Distinc characters are : "<<" ";
     for(auto it=st.begin();it!=st.end();++it) cout<<*it<<" ";
 
     

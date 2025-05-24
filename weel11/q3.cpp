@@ -1,6 +1,7 @@
 /* Given a set of elements, you have to partition the set into two subsets such that the sum of
 elements in both subsets is same. Design an algorithm and implement it using a program to solve
 this problem */
+
 #include<iostream>
 #include<vector>
 #include<algorithm>
