@@ -36,5 +36,6 @@ int main()
         }
     }
     cout<<"No Duplicate is found in window size of : "<<k<<endl;
+    cout<<"END-- "<<endl;
     return 0;
 }
