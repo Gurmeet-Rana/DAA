@@ -27,9 +27,7 @@ int main()
 
             if(mp.find(product) != mp.end())
             {
-                pair<int, int> prev = mp[product];
-
-               
+                pair<int, int> prev = mp[product];               
                 if((prev.first != i && prev.second != j) && (prev.second != i && prev.first != j))
                 {
                     cout << "Found pairs (" << prev.first << ", " << prev.second << ") and ("
@@ -44,7 +42,6 @@ int main()
             }
         }
     }
-
     if(!found)
         cout << "No pair exists!" << endl;
 
